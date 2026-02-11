@@ -2,12 +2,7 @@ package com.List.ToDo.entities;
 
 import com.List.ToDo.dto.UsuarioDto;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -75,7 +70,14 @@ public class Usuario {
 
 
 
-    @OneToMany(mappedBy = "tarefa")
+    @OneToMany(mappedBy = "user")
     private List<Tarefa> tarefaList = new ArrayList<>();
 
+    public List<Tarefa> getTarefaList() {
+        return tarefaList;
+    }
+
+    public void setTarefaList(List<Tarefa> tarefaList) {
+        this.tarefaList = tarefaList;
+    }
 }

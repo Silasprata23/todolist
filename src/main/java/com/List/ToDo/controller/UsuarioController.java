@@ -16,31 +16,21 @@ import java.util.List;
 @RequestMapping("user")
 public class UsuarioController {
 
-    @Autowired
-    UsuarioRepository usuarioRepository;
-
     private final UsuarioService usuarioService;
 
     public UsuarioController(UsuarioService usuarioService) {
         this.usuarioService = usuarioService;
     }
 
-    @PostMapping("create")
+    @PostMapping("/create")
     public ResponseEntity<?> criarUsuario(@Valid @RequestBody UsuarioDto dto) {
-
         return ResponseEntity.ok(usuarioService.criarUsuario(dto));
 
     }
 
-    @GetMapping(value = "listar")
-    public List<UsuarioDto> listarUsuario() {
-        List<Usuario> usuarios = usuarioRepository.findAll();
-        List<UsuarioDto> listaDeUsuarios =
-                usuarios.stream().map(UsuarioDto::new).toList();
-        for (Usuario usuario : usuarios) {
-            listaDeUsuarios.add(new UsuarioDto(usuario));
-        }
-        return listaDeUsuarios;
+    @GetMapping(value = "/listar")
+    public ResponseEntity<?> listarUsuario() {
+        return ResponseEntity.ok(usuarioService.listarUsuario());
     }
 
     @DeleteMapping("/delete/{id}")

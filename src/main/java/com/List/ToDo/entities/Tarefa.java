@@ -22,6 +22,7 @@ public class Tarefa {
     private LocalDate dtInicio;
     private LocalDate dtFim;
 
+
 //    public Tarefa(long id, String nome, String descricao, Status status, LocalDate dtInicio, LocalDate dtFim) {
 //        this.id = id;
 //        this.nome = nome;
@@ -46,7 +47,8 @@ public class Tarefa {
         this.dtInicio = LocalDate.now();
     }
 
-    public Tarefa(){}
+    public Tarefa() {
+    }
 
 
     public long getId() {
@@ -99,14 +101,15 @@ public class Tarefa {
 
 
     @ManyToOne
-    @JoinColumn(name = "tarefa_id")
-    private Usuario tarefa;
+    @JoinColumn(name = "user_id")
+    private Usuario user;
 
-    public Usuario getTarefa() {
-        return tarefa;
+    public Usuario getUser() {
+        return user;
     }
 
-    public void setTarefa(Usuario tarefa) {
-        this.tarefa = tarefa;
+    public void setUser(Usuario user) {
+        this.user = user;
     }
+
 }

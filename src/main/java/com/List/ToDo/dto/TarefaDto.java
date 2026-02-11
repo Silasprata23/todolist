@@ -18,23 +18,25 @@ public class TarefaDto {
     private Status status;
     private LocalDate dtInicio;
     private LocalDate dtFim;
-    private Usuario tarefa_id;
+    private long User_id;
 
-    public TarefaDto(String nome, String descricao, Status status, LocalDate dtInicio, LocalDate dtFim, Usuario tarefa_id) {
+
+    public TarefaDto(Long id, String nome, String descricao, Status status, LocalDate dtInicio, LocalDate dtFim, long user_id) {
+        Id = id;
         this.nome = nome;
         this.descricao = descricao;
         this.status = status;
         this.dtInicio = dtInicio;
         this.dtFim = dtFim;
-        this.tarefa_id = tarefa_id;
+        User_id = user_id;
     }
 
-    public Usuario getTarefa_id() {
-        return tarefa_id;
+    public long getUser_id() {
+        return User_id;
     }
 
-    public void setTarefa_id(Usuario tarefa_id) {
-        this.tarefa_id = tarefa_id;
+    public void setUser_id(long user_id) {
+        User_id = user_id;
     }
 
     public Long getId() {

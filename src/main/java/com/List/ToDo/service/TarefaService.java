@@ -3,9 +3,12 @@ package com.List.ToDo.service;
 import com.List.ToDo.dto.TarefaDto;
 import com.List.ToDo.entities.Status;
 import com.List.ToDo.entities.Tarefa;
+import com.List.ToDo.entities.Usuario;
 import com.List.ToDo.repositories.TarefaRepository;
 import com.List.ToDo.repositories.UsuarioRepository;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
 
 
 @Service
@@ -19,7 +22,12 @@ public class TarefaService {
 
     public void criarTarefa(TarefaDto dto){
         Tarefa task = new Tarefa(dto);
-        tarefaRepository.save(task);
+        task.setNome(dto.getNome());
+        task.setDescricao(dto.getDescricao());
+        task.setDtInicio(LocalDate.now());
+        task.setStatus(Status.PENDENTE);
+
+
 
     }
 
